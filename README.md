@@ -1,124 +1,105 @@
-YALLAGAME - Mobile Game on Unity for Tiltan
+# YALLAGAME
 
-Participants
+A mobile arcade game developed in Unity as part of a Tiltan project.
 
-David Rubin – UI, Settings, and Save System (JSON)
-Mikhail Nazarenko – Mobile Input, Scene Setup, and Gameplay Tracking
+## Table of Contents
 
-Project Description
+1. [Participants](#participants)  
+2. [Project Description](#project-description)  
+3. [Core Features](#core-features)  
+4. [Project Structure](#project-structure)  
+5. [Setup Instructions](#setup-instructions)  
+6. [Save & Load System](#save--load-system)  
+7. [Building the Project](#building-the-project)  
+8. [Platform Support](#platform-support)  
+9. [Planned Features](#planned-features)  
 
-YALLAGAME is a mobile arcade game developed in Unity. The player controls a rolling ball that avoids obstacles and collects coins. The game is optimized for mobile platforms, with adaptive UI, a JSON-based saving system, and background music that persists across scenes.
+## Participants
 
-Core Features
+- **David Rubin** – UI, settings, save system (JSON)  
+- **Mikhail Nazarenko** – mobile input, scene setup, gameplay tracking  
 
-Ball Control
+## Project Description
 
-Smooth forward and lateral movement
-Virtual buttons for mobile devices
-Jump system with touch swipe detection
-Based on BallMovement and BallMovementWithJump scripts
-Obstacle System
+YALLAGAME is an Android arcade game in which the player controls a rolling ball, avoids obstacles, and collects coins. The game features:
+- Mobile-optimized UI  
+- JSON-based save/load with screenshots  
+- Persistent background music across scenes  
 
-Dynamic obstacle spawning
-Object pooling for performance optimization
-Customizable spawn points and patterns
-Save System
+## Core Features
 
-JSON-based save/load mechanism
-Multiple save files with date, time, score, play duration, and screenshots
-Scrollable save menu showing existing saves
-Audio System
+### Ball Control
+- Smooth forward and lateral movement  
+- On-screen buttons for touch input  
+- Swipe-based jump mechanic  
+- Scripts: `BallMovement.cs`, `BallMovementWithJump.cs`  
 
-Volume control via AudioMixer and UI slider
-Music playback persists across scene loads (using singleton pattern)
-AudioSettingsManager script handles settings
-User Interface
+### Obstacle System
+- Dynamic obstacle spawning  
+- Object pooling for performance  
+- Configurable spawn points and patterns  
+- Scripts: `Obstacle.cs`, `ObstaclePooler.cs`  
 
-Main menu with Start, Load, Settings, and Exit buttons
-Pause menu with resume and save buttons
-Settings screen with music volume slider
-Load screen with scrollable list of save entries
-Mobile Adaptation
+### Save System
+- JSON files stored in `persistentDataPath`  
+- Multiple save slots containing: name, score, volume, play time, timestamp, screenshot path  
+- Scrollable load menu with thumbnails  
+- Scripts: `SaveManager.cs`, `SaveData.cs`, `GameDataTest.cs`, `SaveEntryUI.cs`  
 
-Touch screen and gyroscope support
-Dynamic layout adjustment for different resolutions
-Optimized for Android builds
-Project Structure
+### Audio System
+- Music persists across scenes via `DontDestroyOnLoad`  
+- Volume control through `AudioMixer` and UI slider  
+- Script: `AudioSettingsManager.cs`  
 
-Assets/
-|-- Audio/
-| |-- Music/
-| |-- Mixer/
-|-- Prefabs/
-| |-- Obstacles/
-| |-- UI/
-| |-- SaveEntryButton.prefab
-|-- Scenes/
-| |-- MainMenu.unity
-| |-- PlayScene.unity
-| |-- SettingsMenu.unity
-| |-- LoadMenu.unity
-|-- Scripts/
-| |-- Audio/
-| | |-- AudioSettingsManager.cs
-| |-- Ball/
-| | |-- BallMovement.cs
-| | |-- BallMovementWithJump.cs
-| |-- Obstacles/
-| | |-- Obstacle.cs
-| | |-- ObstaclePooler.cs
-| |-- SaveSystem/
-| | |-- SaveManager.cs
-| | |-- SaveData.cs
-| | |-- GameDataTest.cs
-| | |-- SaveEntryUI.cs
-| |-- UI/
-| | |-- MenuManager.cs
-| | |-- PauseMenuMobile.cs
-| | |-- ScreenOrientationDetector.cs
-| | |-- VolumeSlider.cs
+### User Interface
+- **Main Menu**: Start | Load | Settings | Exit  
+- **Pause Menu**: Resume | Save  
+- **Settings Screen**: Volume slider  
+- **Load Screen**: Scrollable list of saves with metadata  
 
-Setup Instructions
+### Mobile Adaptation
+- Touch and gyroscope support  
+- Responsive layouts for various resolutions  
+- Optimized for Android  
 
-Open the project in Unity Editor (recommended version: 2022.3 LTS)
-Install TextMeshPro if prompted
-Add all scenes to Build Settings
-Assign all necessary references in the Inspector:
-AudioMixer to AudioSettingsManager
-SaveManager to GameDataTest
-UI objects to VolumeSlider and SaveEntryUI
-In Canvas components, ensure "Render Mode" is set to "Screen Space - Overlay"
-Save and Load System
+## Project Structure
 
-Each save creates a separate JSON file in the persistent data path
-Save data includes: player name, score, volume, play time, timestamp, screenshot path
-Screenshots are generated when saving
-The Load screen displays:
-Screenshot thumbnail
-Save time and date
-Current score
-Total playtime
-Load functionality will be implemented in a later version
-Building the Project
+Assets/ ├── Audio/ │ ├── Music/ │ └── Mixer/ ├── Prefabs/ │ ├── Obstacles/ │ └── UI/ │ └── SaveEntryButton.prefab  ├── Scenes/ │ ├── MainMenu.unity  │ ├── PlayScene.unity  │ ├── SettingsMenu.unity  │ └── LoadMenu.unity  ├── Scripts/ │ ├── Audio/ │ │ └── AudioSettingsManager.cs  │ ├── Ball/ │ │ ├── BallMovement.cs  │ │ └── BallMovementWithJump.cs  │ ├── Obstacles/ │ │ ├── Obstacle.cs  │ │ └── ObstaclePooler.cs  │ ├── SaveSystem/ │ │ ├── SaveManager.cs  │ │ ├── SaveData.cs  │ │ ├── GameDataTest.cs  │ │ └── SaveEntryUI.cs  │ └── UI/ │ ├── MenuManager.cs  │ ├── PauseMenuMobile.cs  │ ├── ScreenOrientationDetector.cs  │ └── VolumeSlider.cs
 
-Go to File > Build Settings
-Ensure all scenes are added
-Select Android as target platform
-Click Build or Build and Run
-Platform Support
+## Setup Instructions
 
-Android (currently tested and optimized)
-Notes
+1. Open the project in Unity (2022.3 LTS recommended).  
+2. Install TextMeshPro if prompted.  
+3. Add all scenes to **File > Build Settings**.  
+4. In the Inspector, assign references:  
+   - **AudioMixer** → `AudioSettingsManager`  
+   - **SaveManager** → `GameDataTest`  
+   - UI elements → `VolumeSlider`, `SaveEntryUI`  
+5. Ensure each Canvas uses **Screen Space – Overlay**.
 
-Application.Quit only works in a build, not in the Unity Editor
-Music player persists across scenes using DontDestroyOnLoad
-Save files are located at:
-macOS: ~/Library/Application Support/CompanyName/ProductName/
-Windows: %AppData%/LocalLow/CompanyName/ProductName/
-Planned Features
+## Save & Load System
 
-Coin collection mechanic
-Full load system implementation
-End-game screen and restart option
-Difficulty scaling
-More dynamic obstacles
+- Saves generate individual JSON files in the persistent data path:  
+  - macOS: `~/Library/Application Support/CompanyName/ProductName/`  
+  - Windows: `%AppData%/LocalLow/CompanyName/ProductName/`  
+- Each save includes an auto-captured screenshot.  
+- Load menu displays thumbnail, date/time, score, and playtime.
+
+## Building the Project
+
+1. Open **File > Build Settings**.  
+2. Verify that all scenes are listed.  
+3. Select **Android** as the target platform.  
+4. Click **Build** or **Build and Run**.
+
+## Platform Support
+
+- Android (tested and optimized)
+
+## Planned Features
+
+- Coin collection mechanics  
+- Complete load functionality  
+- End-game screen and restart option  
+- Difficulty scaling  
+- New dynamic obstacle types  
