@@ -2,9 +2,8 @@ YALLAGAME - Mobile Game on Unity for Tiltan
 
 Participants
 
-Mikhail Nazarenko – Gameplay Mechanics
-David Rubin – ScriptableObjects, JSON Saving System, Object Pooling, UI/UX
-
+David Rubin – UI, Settings, and Save System (JSON)
+Mikhail Nazarenko – Mobile Input, Scene Setup, and Gameplay Tracking
 
 Project Description
 
