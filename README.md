@@ -17,7 +17,9 @@ A mobile arcade game developed in Unity as part of a Tiltan project.
 ## Participants
 
 - **David Rubin** – UI, settings, save system (JSON)  
-- **Mikhail Nazarenko** – mobile input, scene setup, gameplay tracking  
+- **Mikhail Nazarenko** – mobile input, scene setup, gameplay tracking
+
+- The game uses music by Moby Gratis under the license agreement available at https://support.mobygratis.com/article/61-license-agreement
 
 ## Project Description
 
