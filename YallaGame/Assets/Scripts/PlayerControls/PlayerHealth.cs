@@ -18,7 +18,6 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = _PlayerSettings.playerMaxHealth;
-        //_UIManager.UpdateUIHP();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class CreditsWindow : MonoBehaviour
 {
-    public GameObject creditsPanel;      // Панель с авторами
-    public GameObject settingsPanel;     // Панель настроек
+    public GameObject creditsPanel;      
+    public GameObject settingsPanel;     
 
-    // Открыть окно с авторами
+    // open credits panel
     public void ShowCredits()
     {
         creditsPanel.SetActive(true);
         settingsPanel.SetActive(false);
     }
 
-    // Вернуться в настройки
+    // return to settings
     public void BackToSettings()
     {
         creditsPanel.SetActive(false);

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[ExecuteAlways] // Чтобы работал в редакторе без запуска сцены
+[ExecuteAlways] // So it works in the editor without running the scene
 public class ColliderGizmos : MonoBehaviour
 {
     private void OnDrawGizmosSelected()
@@ -8,9 +8,9 @@ public class ColliderGizmos : MonoBehaviour
         BoxCollider box = GetComponent<BoxCollider>();
         if (box == null) return;
 
-        Gizmos.color = Color.red; 
+        Gizmos.color = Color.red;
 
-        // Позиция и размер с учётом трансформаций объекта
+        // Position and size considering the object's transformations
         Matrix4x4 rotationMatrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.lossyScale);
         Gizmos.matrix = rotationMatrix;
 

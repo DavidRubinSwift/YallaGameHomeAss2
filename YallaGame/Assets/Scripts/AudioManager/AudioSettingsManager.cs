@@ -4,22 +4,19 @@ using UnityEngine.UI;
 
 public class VolumeSlider : MonoBehaviour
 {
-    public AudioMixer audioMixer; // подключим сюда наш микшер
-    public Slider volumeSlider;   // подключим слайдер
+    public AudioMixer audioMixer; // connect your AudioMixer here
+    public Slider volumeSlider;   // connect the Slider here
 
     void Start()
     {
-        // Установим значение слайдера в начало (например, -20 dB = 0.5f)
+        // Add the volume change listener
         volumeSlider.onValueChanged.AddListener(SetVolume);
     }
 
     public void SetVolume(float value)
     {
-        // Преобразуем значение слайдера (0..1) в децибелы (-80..0)
+        // Convert the slider value (0..1) to decibels (-80..0)
         float dB = Mathf.Log10(Mathf.Max(value, 0.0001f)) * 20;
         audioMixer.SetFloat("MusicVolume", dB);
     }
-    
-
-
 }

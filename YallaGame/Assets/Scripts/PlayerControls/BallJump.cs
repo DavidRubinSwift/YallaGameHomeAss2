@@ -14,11 +14,11 @@ public class BallJump : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
-            Debug.LogError("Rigidbody не найден на объекте!");
+            Debug.LogError("Rigidbody not found on the object!");
         }
     }
 
-    protected  void Update()
+    protected void Update()
     {
         HandleJumpInput();
         HandleSwipeJump();
@@ -55,7 +55,7 @@ public class BallJump : MonoBehaviour
         }
     }
 
-    // 🔘 Метод для прыжка с кнопки на канвасе
+    // Method for jumping using a button on the canvas
     public void JumpFromButton()
     {
         if (isGrounded)

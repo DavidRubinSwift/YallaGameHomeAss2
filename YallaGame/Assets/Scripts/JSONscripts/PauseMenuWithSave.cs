@@ -21,7 +21,7 @@ public class PauseMenuWithSave : MonoBehaviour
     {
         SaveData data = new SaveData();
         data.playerName = "David";
-        data.playerScore = 456; // заменишь на актуальные данные
+        data.playerScore = 456; 
         data.volume = AudioListener.volume;
 
         saveManager.SaveGame(data);

@@ -5,7 +5,7 @@ public class TimerManager : MonoBehaviour
     public PauseMenuMobile _PauseMenuMobile;
     public UIManager _UIManager;
 
-    public float elapsedTime = 0f; // теперь мы считаем ПРОШЕДШЕЕ время
+    public float elapsedTime = 0f; // now we count the ELAPSED time
 
     void Update()
     {
@@ -14,11 +14,11 @@ public class TimerManager : MonoBehaviour
 
         if (!_PauseMenuMobile.gamePaused)
         {
-            // Просто наращиваем время каждый кадр
+            // Just increment the time each frame
             elapsedTime += Time.deltaTime;
         }
 
-        // Передаём округлённое время в UI
+        // Pass the rounded time to the UI
         _UIManager.UpdateUITimer(Mathf.FloorToInt(elapsedTime));
     }
 }

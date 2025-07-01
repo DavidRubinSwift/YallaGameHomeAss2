@@ -5,8 +5,10 @@ public class ControlModeManager : MonoBehaviour
 {
     public event OnControlsChange ControlsChenged;
     
+    //try to comment
+    
     [Header("References")]
-    public GameObject player; // Перетащи сюда объект игрока
+    public GameObject player; // Drag your player object here
 
     [Header("Gyro Control Scripts (Group 1)")]
     private MonoBehaviour[] gyroScripts;
@@ -18,16 +20,16 @@ public class ControlModeManager : MonoBehaviour
 
     private void Awake()
     {
-        // === Автоматически находим и назначаем скрипты ===
+        // === Automatically find and assign scripts ===
 
         if (player != null)
         {
-            // Группа 1
+            // Group 1
             gyroScripts = new MonoBehaviour[2];
             gyroScripts[0] = player.GetComponent<BallMovement>();
             gyroScripts[1] = player.GetComponent<BallMovementWithJump>();
 
-            // Группа 2
+            // Group 2
             buttonsScripts = new MonoBehaviour[2];
             buttonsScripts[0] = player.GetComponent<Player2Movement>();
             buttonsScripts[1] = player.GetComponent<BallJump>();

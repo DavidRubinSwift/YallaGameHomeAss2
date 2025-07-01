@@ -5,14 +5,14 @@ public class LoadMenuSwitcher : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject loadMenuPanel;
 
-    // Показывает панель загрузки и скрывает главное меню
+    // Show panels
     public void OpenLoadMenu()
     {
         mainMenuPanel.SetActive(false);
         loadMenuPanel.SetActive(true);
     }
 
-    // Возвращает в главное меню из панели загрузки
+    // return to main menu
     public void BackToMainMenu()
     {
         loadMenuPanel.SetActive(false);

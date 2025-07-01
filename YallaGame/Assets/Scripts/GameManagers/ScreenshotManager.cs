@@ -4,7 +4,7 @@ using System.IO;
 
 public class ScreenshotManager : MonoBehaviour
 {
-    public Camera screenshotCamera; // Виртуальная камера для скриншота
+    public Camera screenshotCamera; // Virtual camera for screenshot
     public int resolutionWidth =  1080;
     public int resolutionHeight = 1920;
 
@@ -33,39 +33,38 @@ public class ScreenshotManager : MonoBehaviour
     {
         isCapturing = true;
 
-        // Включаем камеру (если она отключена)
+        // Enable the camera (if it’s disabled)
         screenshotCamera.gameObject.SetActive(true);
 
-        // Подождем один кадр, чтобы камера обновилась
+        // Wait one frame to let the camera update
         yield return new WaitForEndOfFrame();
 
-        // Создаём RenderTexture
+        // Create a RenderTexture
         RenderTexture renderTex = new RenderTexture(resolutionWidth, resolutionHeight, 24);
         screenshotCamera.targetTexture = renderTex;
 
-        // Рендерим камеру вручную
+        // Manually render the camera
         screenshotCamera.Render();
 
-        // Копируем изображение в Texture2D
+        // Copy the image into a Texture2D
         RenderTexture.active = renderTex;
         Texture2D screenshot = new Texture2D(resolutionWidth, resolutionHeight, TextureFormat.RGB24, false);
         screenshot.ReadPixels(new Rect(0, 0, resolutionWidth, resolutionHeight), 0, 0);
         screenshot.Apply();
 
-        // Очищаем ресурсы
+        // Clean up resources
         screenshotCamera.targetTexture = null;
         RenderTexture.active = null;
         Destroy(renderTex);
 
-        // Сохраняем файл PNG
+        // Save PNG file
         byte[] bytes = screenshot.EncodeToPNG();
         string filename = Path.Combine(Application.persistentDataPath, "screenshot_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".png");
         File.WriteAllBytes(filename, bytes);
         Debug.Log("Screenshot saved to: " + filename);
-        Debug.Log("Скриншот находится здесь: " + Application.persistentDataPath);
+        Debug.Log("Screenshot is located here: " + Application.persistentDataPath);
 
-
-        // Выключаем камеру обратно
+        // Disable the camera again
         screenshotCamera.gameObject.SetActive(false);
 
         isCapturing = false;

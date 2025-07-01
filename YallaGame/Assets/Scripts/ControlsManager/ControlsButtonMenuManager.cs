@@ -8,6 +8,7 @@ public class ControlsButtonMenuManager : MonoBehaviour
     public Button giroControlsButton;
     public Button buttonsControlsButton;
 
+    //key to save Control type through Prefs
     private const string CONTROL_KEY = "ControlType";
 
     private void Start()

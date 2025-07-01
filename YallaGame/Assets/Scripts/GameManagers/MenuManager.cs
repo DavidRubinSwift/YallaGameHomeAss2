@@ -1,104 +1,36 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    
-    // Вызывается при нажатии кнопки "Start Game"
+    // Called when the "Start Game" button is pressed
     public void StartGame()
     {
         SceneManager.LoadScene("NewPlayZone");
     }
 
-    // Вызывается при нажатии кнопки "Load"
+    // Called when the "Load" button is pressed
     public void LoadGame()
     {
-        // Пока ничего не происходит
-        Debug.Log("Load Game — функция пока не реализована");
+        // Not implemented yet
+        Debug.Log("Load Game — function not implemented yet");
     }
 
-    // Вызывается при нажатии кнопки "Settings"
+    // Called when the "Settings" button is pressed
     public void OpenSettings()
     {
-        SceneManager.LoadScene("SettingsMenu"); // Загружаем сцену настроек
+        SceneManager.LoadScene("SettingsMenu"); // Load the settings scene
     }
 
-    // Вызывается при нажатии кнопки "Exit"
+    // Called when the "Exit" button is pressed
     public void ExitGame()
     {
-        Debug.Log("Игра закрывается...");
+        Debug.Log("Game is closing...");
 
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // выход из Play Mode
+        UnityEditor.EditorApplication.isPlaying = false; // exit Play Mode
 #else
-    Application.Quit(); // Закрываем приложение (работает только в сборке)
-#endif
-    }
-
-}
-
-
-
-
-/*
-
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-public class MenuManager : MonoBehaviour
-{
-    public void StartGame()
-    {
-        SceneManager.LoadScene("PlayScene"); 
-    }
-    {
-        public void StartGame()
-        {
-            SceneManager.LoadScene("PlayScene"); 
-        }
-        
-        public void LoadMikeScene()
-        {
-            SceneManager.LoadScene("Mike"); 
-        }
-    
-       
-        public void LoadDavidScene()
-        {
-            SceneManager.LoadScene("David"); 
-        }
-    
-        // Выход из игры или Play Mode
-        public void ExitGame()
-        {
-    #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false; // выход из Play Mode
-    #else
-            Application.Quit(); // выход из билда
-    #endif
-        }asd
-    }
-    public void LoadMikeScene()
-    {
-        SceneManager.LoadScene("Mike"); 
-    }
-
-   
-    public void LoadDavidScene()
-    {
-        SceneManager.LoadScene("David"); 
-    }
-
-    // Выход из игры или Play Mode
-    public void ExitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false; // выход из Play Mode
-#else
-        Application.Quit(); // выход из билда
+        Application.Quit(); // Quit the application (works only in build)
 #endif
     }
 }
-*/
-

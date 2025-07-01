@@ -6,7 +6,7 @@ public class Player2Movement : MonoBehaviour
     public PlayerSettings _PlayerSettings;
     public PlayerAnimatorController _PlayerAnimator;
     
-      [Header("Movement Settings")]
+    [Header("Movement Settings")]
     public float sideSpeed;
     public float smoothing = 4f;
     public float minX = -1.4f;
@@ -32,12 +32,12 @@ public class Player2Movement : MonoBehaviour
 
     private void Update()
     {
-        // === Обновляем скорость вперёд ===
-        float vertical = Input.GetAxis("Vertical"); // опционально: клавиши W/S
+        // === Update forward speed ===
+        float vertical = Input.GetAxis("Vertical"); // optional: W/S keys
         moveSpeed += vertical * acceleration * Time.deltaTime;
         moveSpeed = Mathf.Clamp(moveSpeed, minSpeed, maxSpeed);
 
-        // === Плавное боковое движение ===
+        // === Smooth side movement ===
         if (movingLeft) MoveLeft();
         if (movingRight) MoveRight();
 
@@ -45,14 +45,14 @@ public class Player2Movement : MonoBehaviour
         Vector3 sideTarget = new Vector3(targetSidePosition.x, currentPos.y, currentPos.z);
         Vector3 sideMove = Vector3.Lerp(currentPos, sideTarget, Time.deltaTime * smoothing);
     
-        // === Движение вперёд ===
+        // === Forward movement ===
         Vector3 forwardMove = Vector3.forward * moveSpeed * Time.deltaTime;
 
-        // === Итоговая позиция ===
+        // === Final position ===
         Vector3 newPosition = sideMove + forwardMove;
         transform.position = newPosition;
 
-        // === Вращение графики ===
+        // === Rotate the graphic ===
         if (forwardMove != Vector3.zero)
         {
             float distance = forwardMove.magnitude;
@@ -75,7 +75,7 @@ public class Player2Movement : MonoBehaviour
         targetSidePosition.x = Mathf.Clamp(targetSidePosition.x, minX, maxX);
     }
 
-    // Для кнопок на Canvas
+    // For buttons on Canvas
     public void OnLeftButtonDown() => movingLeft = true;
     public void OnLeftButtonUp() => movingLeft = false;
     public void OnRightButtonDown() => movingRight = true;

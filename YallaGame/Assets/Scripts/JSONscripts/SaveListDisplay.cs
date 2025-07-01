@@ -5,8 +5,8 @@ using System.IO;
 
 public class SaveListDisplay : MonoBehaviour
 {
-    public GameObject saveButtonPrefab;       // Префаб кнопки или текста
-    public Transform contentParent;           // Контейнер для списка
+    public GameObject saveButtonPrefab;       
+    public Transform contentParent;           
     private string saveDirectory;
 
     void Start()
@@ -17,20 +17,20 @@ public class SaveListDisplay : MonoBehaviour
 
     void PopulateSaveList()
     {
-        // Удаляем старые кнопки, если уже были
+        // Remove old buttons if they already exist
         foreach (Transform child in contentParent)
         {
             Destroy(child.gameObject);
         }
 
-        // Получаем все .json файлы
+        // Get all .json files
         string[] saveFiles = Directory.GetFiles(saveDirectory, "*.json");
 
         foreach (string path in saveFiles)
         {
             string fileName = Path.GetFileName(path);
 
-            // Создаём UI элемент (например, TMP_Text или кнопку)
+            // Create a UI element (e.g., TMP_Text or a button)
             GameObject buttonGO = Instantiate(saveButtonPrefab, contentParent);
             TMP_Text text = buttonGO.GetComponentInChildren<TMP_Text>();
             if (text != null)
@@ -38,7 +38,7 @@ public class SaveListDisplay : MonoBehaviour
                 text.text = fileName;
             }
 
-            // При желании можно позже добавить сюда обработку кликов
+            // Optionally, you can add click handling here later
         }
 
         if (saveFiles.Length == 0)

@@ -14,13 +14,13 @@ public class BallMovementWithJump : BallMovement
         rb = GetComponent<Rigidbody>();
         if (rb == null)
         {
-            Debug.LogError("Rigidbody не найден на объекте!");
+            Debug.LogError("There is no RG setted");
         }
     }
 
     protected override void Update()
     {
-        base.Update(); // вызываем движение из базового класса
+        base.Update(); // movement from base class
 
         HandleJumpInput();
         HandleSwipeJump();
@@ -56,8 +56,7 @@ public class BallMovementWithJump : BallMovement
             }
         }
     }
-
-    // 🔘 Метод для прыжка с кнопки на канвасе
+    
     public void JumpFromButton()
     {
         if (isGrounded)

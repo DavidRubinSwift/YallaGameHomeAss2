@@ -7,7 +7,7 @@ public class SaveData
     public string playerName;
     public float volume;
 
-    public string saveTime;        // дата и время сохранения
-    public float elapsedTime;         // сколько секунд прошло в игре
-    public string screenshotPath;  // путь до скриншота
+    public string saveTime;        // date and time
+    public float elapsedTime;         // second of gameplay
+    public string screenshotPath;  // path to file
 }
